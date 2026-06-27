@@ -1,0 +1,12 @@
+{
+  "name": "frontend",
+  "private": true,
+  "description": "Runs scripts in internview-prep-ai — use npm run dev from here or cd internview-prep-ai",
+  "scripts": {
+    "dev": "npm run dev --prefix internview-prep-ai",
+    "build": "npm run build --prefix internview-prep-ai",
+    "preview": "npm run preview --prefix internview-prep-ai",
+    "lint": "npm run lint --prefix internview-prep-ai",
+    "install:app": "npm install --prefix internview-prep-ai"
+  }
+}
