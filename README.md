@@ -1,12 +1,12 @@
-🎓 InternView AI — AI-Powered Interview Preparation Platform
-React Node.js Express.js SQLite Hugging Face Vite Tailwind CSS
+# 🎓 InternView AI — AI-Powered Interview Preparation Platform
+### React Node.js Express.js SQLite Hugging Face Vite Tailwind CSS
 
 🚀 InternView AI is an AI-powered interview preparation companion designed to help candidates practice, refine, and ace their job interviews. It allows users to launch customized preparation sessions tailored to targeted roles, experience levels, and topics, generating hyper-focused interview questions, storing candidate notes, and providing real-time AI-powered concept explanations.
 
-🎯 Problem Statement
+## 🎯 Problem Statement
 Preparing for technical and behavioral interviews is often overwhelming due to the vast range of potential topics and a lack of structured, role-specific practice resources. Candidates need an interactive way to simulate realistic, personalized interview questions and get instant, detailed feedback/explanations without expensive coaching platforms.
 
-💡 Our Solution
+## 💡 Our Solution
 InternView AI modernizes interview prep by providing:
 
 | Feature | Description |
@@ -17,23 +17,23 @@ InternView AI modernizes interview prep by providing:
 | 📁 Session Trackers | Save and manage multiple preparation sessions across different target roles (e.g. Frontend Engineer, Data Scientist). |
 | 👤 Profile Customization | JWT-secured authentication with support for custom profile avatar uploads. |
 
-✨ Features
-🤖 Core Intelligence (Hugging Face AI Client)
+## ✨ Features
+### 🤖 Core Intelligence (Hugging Face AI Client)
 - **Dynamic Question Generation**: Submits target role, years of experience, and focus areas to the Hugging Face API to compile a curated list of relevant questions.
 - **Concept Explanations**: Instantly generates deep dives, code snippets, and interview tips when requested for any specific question.
 - **JSON Parsing alignment**: Integrated cleanup logic to handle and parse generative JSON outputs reliably on the Express server.
 
-📁 Session & Question Management
+### 📁 Session & Question Management
 - **Dashboard Overview**: Access a grid of your active preparation tracks with details on role, experience, and number of questions.
 - **Active Pinning**: Keep critical or tricky questions pinned for quick filtering and focused revision.
 - **Progress Tracking & Notes**: Write down your thoughts, mock answers, or key points on each question card to track your progress.
 
-👤 Auth & Avatar Uploads
+### 👤 Auth & Avatar Uploads
 - **Custom JWT Auth**: Secure account registration and token-based state persistence.
 - **Local File Uploads**: Incorporates a Multer-based image uploading pipeline to save custom profile pictures locally and render them instantly.
 
-🛠 Tech Stack
-🖥️ Frontend
+## 🛠 Tech Stack
+### 🖥️ Frontend
 - **React 19** — Client framework for highly interactive user interfaces.
 - **Vite** — Ultra-fast frontend build tooling.
 - **TailwindCSS v4** — Modern utility-first styling.
@@ -41,15 +41,15 @@ InternView AI modernizes interview prep by providing:
 - **React Hot Toast** — Elegant toast notifications.
 - **React Markdown & Syntax Highlighter** — Renders beautifully formatted AI-generated explanations and code snippets.
 
-⚙️ Backend & AI
+### ⚙️ Backend & AI
 - **Node.js & Express.js** — Secure middleware API router.
 - **Better-SQLite3** — High-performance local SQL database wrapper for storing users, sessions, and question states.
 - **Bcryptjs & jsonwebtoken** — Password hashing and JWT generation for secure sessions.
 - **Multer** — Middleware for handling multipart/form-data profile photo uploads.
 - **Hugging Face Serverless API** — Generates interview questions and explanations using `Qwen/Qwen2.5-7B-Instruct`.
 
-🔗 API Reference
-👤 User Authorization & Profile
+## 🔗 API Reference
+### 👤 User Authorization & Profile
 | Endpoint | Method | Purpose |
 | :--- | :--- | :--- |
 | `/api/auth/register` | POST | Register a new candidate profile. |
@@ -57,7 +57,7 @@ InternView AI modernizes interview prep by providing:
 | `/api/auth/profile` | GET | Retrieve candidate profile details (Protected). |
 | `/api/auth/upload-profile-image` | POST | Upload a custom profile picture (Protected). |
 
-📁 Interview Sessions
+### 📁 Interview Sessions
 | Endpoint | Method | Purpose |
 | :--- | :--- | :--- |
 | `/api/sessions/my-sessions` | GET | Retrieve all active preparation sessions for current user (Protected). |
@@ -65,7 +65,7 @@ InternView AI modernizes interview prep by providing:
 | `/api/sessions/:id` | GET | Retrieve details of a specific session (Protected). |
 | `/api/sessions/:id` | DELETE | Remove a past preparation session (Protected). |
 
-🧠 Question Operations & AI
+### 🧠 Question Operations & AI
 | Endpoint | Method | Purpose |
 | :--- | :--- | :--- |
 | `/api/questions/add` | POST | Add a manual question to an active session (Protected). |
@@ -74,18 +74,18 @@ InternView AI modernizes interview prep by providing:
 | `/api/ai/generate-questions` | POST | Generate a set of questions from Hugging Face (Protected). |
 | `/api/ai/generate-explanation` | POST | Generate explanation and tips for a specific question (Protected). |
 
-🚀 Getting Started
-Prerequisites
+## 🚀 Getting Started
+### Prerequisites
 - **Node.js 18+**
 - **npm** or **yarn**
 
-1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/sachin-185/InternView-AI-AI-Powered-Interview-Preparation.git
 cd "intern app"
 ```
 
-2️⃣ Environment Configuration
+### 2️⃣ Environment Configuration
 Create a `.env` file in the `backend/` directory:
 ```env
 PORT=8000
@@ -93,7 +93,7 @@ JWT_SECRET=your_jwt_secret_key_here
 HUGGINGFACE_TOKEN=your_huggingface_api_token_here
 ```
 
-3️⃣ Initialize Dependencies
+### 3️⃣ Initialize Dependencies
 Install dependencies for both frontend and backend modules:
 ```bash
 # Install backend dependencies
@@ -108,7 +108,7 @@ npm install
 npm run install:app
 ```
 
-4️⃣ Run the Application
+### 4️⃣ Run the Application
 Boot the backend server and frontend client concurrently:
 
 - **Start Express Backend**:
@@ -125,7 +125,7 @@ Boot the backend server and frontend client concurrently:
   ```
   *Vite Dev Server running on:* `http://localhost:5173`
 
-📐 Architecture
+## 📐 Architecture
 ```
 ┌────────────────────────────────────────────────────────┐
 │                   InternView UI (Vite)                 │
@@ -156,7 +156,7 @@ Boot the backend server and frontend client concurrently:
 └────────────────────────┘
 ```
 
-📁 Project Structure
+## 📁 Project Structure
 ```
 intern app/
 ├── 📂 backend/                 # Node.js + Express.js API
@@ -189,19 +189,19 @@ intern app/
 └── README.md                   # Project Documentation
 ```
 
-🔒 Security & Privacy
+## 🔒 Security & Privacy
 - **Stateless Authentication**: Protected routes verify requests via client-side JWT authorization headers.
 - **Local Database Isolation**: Keeps all session records, notes, and user credentials compiled within a single local SQLite container (`internapp.db`).
 - **Encrypted Passes**: Employs industry-standard Bcryptjs encryption layers prior to database writes.
 
-🤝 Contributing
+## 🤝 Contributing
 1. Fork the repository.
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
 4. Push to the branch (`git push origin feature/AmazingFeature`).
 5. Open a Pull Request.
 
-🙏 Acknowledgments
+## 🙏 Acknowledgments
 - **Hugging Face** for serverless model hosting of the state-of-the-art Qwen LLM.
 - **Vite & React** for rapid development capabilities.
 - **SQLite** for lightweight local file database execution.
