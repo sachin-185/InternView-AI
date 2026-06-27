@@ -1,231 +1,207 @@
-⚖️ DriveLegal — Offline-First AI Compliance & Road Safety Companion
-React Node.js Express.js ChromaDB Firebase Vite
+🎓 InternView AI — AI-Powered Interview Preparation Platform
+React Node.js Express.js SQLite Hugging Face Vite Tailwind CSS
 
-🚀 DriveLegal is an offline-first, AI-powered compliance and road safety companion designed for the Road Safety Hackathon 2026. It helps drivers review localized traffic regulations, calculate compounding fine structures, verify vehicle registry records, perform document OCR, and test road safety awareness completely offline.
+🚀 InternView AI is an AI-powered interview preparation companion designed to help candidates practice, refine, and ace their job interviews. It allows users to launch customized preparation sessions tailored to targeted roles, experience levels, and topics, generating hyper-focused interview questions, storing candidate notes, and providing real-time AI-powered concept explanations.
 
 🎯 Problem Statement
-Road safety regulations and challan fine structures are often complex, localized by state, and fragmented. Furthermore, drivers frequently lose cellular network coverage on highways, leaving them without access to critical compliance checks, emergency numbers, or traffic fine calculators when they need them most.
+Preparing for technical and behavioral interviews is often overwhelming due to the vast range of potential topics and a lack of structured, role-specific practice resources. Candidates need an interactive way to simulate realistic, personalized interview questions and get instant, detailed feedback/explanations without expensive coaching platforms.
 
 💡 Our Solution
-DriveLegal modernizes traffic compliance and safety education by providing:
+InternView AI modernizes interview prep by providing:
 
 | Feature | Description |
-| --- | --- |
-| 🤖 Offline-First AI Chatbot | Powered by a local intent classifier and statutory matching engine, with RAG + Hugging Face Qwen-2.5 fallback when online. |
-| 🧮 Challan Fine Calculator | Dynamic compounding fine engine with state-specific overrides for India, the USA, and the UK. |
-| 🔍 Agentic Vehicle Registry | Instantly lookup vehicle ownership, insurance status, emissions (PUC), and active challans. |
-| 📸 Document OCR & PDF | Optical Character Recognition via Tesseract.js to scan traffic documents, and jsPDF to export safety certificates. |
-| 🏆 Gamified Safety Quiz | Interactive driving awareness trivia to build defensive driving habits and earn collectable badges. |
-
-⚠️ **Disclaimer:** Statuary laws and traffic fines are subject to local amendments. This application provides calculations for educational and compliance reference purposes.
+| :--- | :--- |
+| 🤖 AI Question Generator | Powered by Hugging Face serverless inference (`Qwen-2.5-7B-Instruct`), generating 10 tailored interview questions per session. |
+| 💡 Real-time Explanation | Instant, detailed answers and key concept explanations for any interview question to review best practices. |
+| 📌 Pinning & Custom Notes | Pin challenging questions to review later and save custom candidate notes or practice answers directly in-app. |
+| 📁 Session Trackers | Save and manage multiple preparation sessions across different target roles (e.g. Frontend Engineer, Data Scientist). |
+| 👤 Profile Customization | JWT-secured authentication with support for custom profile avatar uploads. |
 
 ✨ Features
-🤖 Core Intelligence (Local NLP Engine)
-- **Offline Intent Classification** — Rules-based parser classifies user intent (fines, emergency, quiz) in milliseconds entirely in the browser.
-- **Quantum-Inspired Superposition Filter (applyQuantumStateCollapse)** — A custom algorithm implemented in nlpEngine.js that treats LLM generative responses as a superposition of numerical eigenvalues (fines, points, codes). It intercepts raw text and collapses any unverified/hallucinated figures to the nearest verified database fact before displaying them to the user.
-- **Grounded RAG Extension** — When online, queries are routed through an Express-based ChromaDB vector database and Hugging Face's Qwen 2.5 72B Instruct model for context-rich natural language answers.
+🤖 Core Intelligence (Hugging Face AI Client)
+- **Dynamic Question Generation**: Submits target role, years of experience, and focus areas to the Hugging Face API to compile a curated list of relevant questions.
+- **Concept Explanations**: Instantly generates deep dives, code snippets, and interview tips when requested for any specific question.
+- **JSON Parsing alignment**: Integrated cleanup logic to handle and parse generative JSON outputs reliably on the Express server.
 
-🚗 Agentic Vehicle Registry Lookup
-- **Active Tool-use Integration** — Chatbot recognizes license plates (e.g., DL-03-A-1234, CA-99A-4040, UK-LX-7777) and automatically queries a secure database.
-- **Full Document Compliance** — Inspects vehicle ownership records, insurance validity, emission compliances, and active outstanding challans.
+📁 Session & Question Management
+- **Dashboard Overview**: Access a grid of your active preparation tracks with details on role, experience, and number of questions.
+- **Active Pinning**: Keep critical or tricky questions pinned for quick filtering and focused revision.
+- **Progress Tracking & Notes**: Write down your thoughts, mock answers, or key points on each question card to track your progress.
 
-🧮 Compounding Challan Calculator
-- **Multi-Region Ruleset** — Fully indexes traffic laws for India (MVA), United States (CVC / NY VTL), and the United Kingdom (Highway Code / RTA).
-- **State-Specific Overrides** — Accounts for localized adjustments, such as stricter overspeeding fines in Delhi NCR and California, and London's ULEZ emission charges.
-- **Demerit Points System** — Track license points penalties (such as the 6-point penalty in the UK for distracted driving).
-
-🏆 Gamified Safety Profiler
-- **Safety Score Tracking** — Every driver starts with a 100-point safety profile that updates dynamically.
-- **Earn Driver Badges** — Achieve titles such as Defensive Driver Master, Law-Abiding Citizen, or Quiz Master based on safety quiz streaks.
-- **Local Session Syncing** — Persistent profile tracking to store quiz streaks and demerits completely offline.
+👤 Auth & Avatar Uploads
+- **Custom JWT Auth**: Secure account registration and token-based state persistence.
+- **Local File Uploads**: Incorporates a Multer-based image uploading pipeline to save custom profile pictures locally and render them instantly.
 
 🛠 Tech Stack
 🖥️ Frontend
-- **React 19** — Modern client framework for responsive user interfaces.
+- **React 19** — Client framework for highly interactive user interfaces.
 - **Vite** — Ultra-fast frontend build tooling.
-- **Firebase SDK** — Seamless user profile syncing and authentication.
-- **Tesseract.js** — Browser-based OCR library to scan driver licenses and documents completely offline.
-- **jsPDF** — Library to generate downloadable road safety compliance certificates.
-- **Lucide React** — Elegant vector iconography system.
+- **TailwindCSS v4** — Modern utility-first styling.
+- **Framer Motion** — Fluid micro-animations for page transitions and card actions.
+- **React Hot Toast** — Elegant toast notifications.
+- **React Markdown & Syntax Highlighter** — Renders beautifully formatted AI-generated explanations and code snippets.
 
 ⚙️ Backend & AI
 - **Node.js & Express.js** — Secure middleware API router.
-- **ChromaDB** — Scalable vector database powering semantic search and Retrieval-Augmented Generation (RAG).
-- **Hugging Face Serverless API** — Generative AI model hosting for conversational fallback (Qwen 2.5 72B Instruct).
-- **Quantum-Inspired State-Collapse Filter** — Algorithmic alignment layer integrated into the Express middleware to filter out LLM numerical hallucinations in real-time.
-- **Concurrently** — Script orchestration to boot the full monorepo stack with a single command.
+- **Better-SQLite3** — High-performance local SQL database wrapper for storing users, sessions, and question states.
+- **Bcryptjs & jsonwebtoken** — Password hashing and JWT generation for secure sessions.
+- **Multer** — Middleware for handling multipart/form-data profile photo uploads.
+- **Hugging Face Serverless API** — Generates interview questions and explanations using `Qwen/Qwen2.5-7B-Instruct`.
 
 🔗 API Reference
-👤 Driver Authorization & Scoring
-
+👤 User Authorization & Profile
 | Endpoint | Method | Purpose |
-| --- | --- | --- |
-| `/api/auth/register` | POST | Register a new driver profile. |
-| `/api/auth/login` | POST | Authorize driver credentials. |
-| `/api/auth/update-score` | POST | Sync driver safety score based on compliance. |
-| `/api/auth/add-badge` | POST | Unlock a new collectible badge on user profile. |
-| `/api/auth/record-quiz` | POST | Sync quiz streaks and demerit statistics. |
+| :--- | :--- | :--- |
+| `/api/auth/register` | POST | Register a new candidate profile. |
+| `/api/auth/login` | POST | Authenticate candidate credentials. |
+| `/api/auth/profile` | GET | Retrieve candidate profile details (Protected). |
+| `/api/auth/upload-profile-image` | POST | Upload a custom profile picture (Protected). |
 
-🧠 Grounded AI Chat & RAG
-
+📁 Interview Sessions
 | Endpoint | Method | Purpose |
-| --- | --- | --- |
-| `/api/chat` | POST | Grounded AI chat incorporating ChromaDB vector context and mock vehicle tool lookups. |
-| `/api/query` | POST | Direct query access to the ChromaDB legal vector collection. |
-| `/api/add` | POST | Insert new statuary documents into ChromaDB. |
-| `/api/health` | GET | Check connections to ChromaDB and check total document counts. |
+| :--- | :--- | :--- |
+| `/api/sessions/my-sessions` | GET | Retrieve all active preparation sessions for current user (Protected). |
+| `/api/sessions/create` | POST | Create a new session with AI-generated questions (Protected). |
+| `/api/sessions/:id` | GET | Retrieve details of a specific session (Protected). |
+| `/api/sessions/:id` | DELETE | Remove a past preparation session (Protected). |
+
+🧠 Question Operations & AI
+| Endpoint | Method | Purpose |
+| :--- | :--- | :--- |
+| `/api/questions/add` | POST | Add a manual question to an active session (Protected). |
+| `/api/questions/:id/pin` | PUT | Toggle pinning status of an interview question (Protected). |
+| `/api/questions/:id/note` | PUT | Update user notes/answers on a question (Protected). |
+| `/api/ai/generate-questions` | POST | Generate a set of questions from Hugging Face (Protected). |
+| `/api/ai/generate-explanation` | POST | Generate explanation and tips for a specific question (Protected). |
 
 🚀 Getting Started
 Prerequisites
-- Node.js 18+
-- npm or yarn
+- **Node.js 18+**
+- **npm** or **yarn**
 
 1️⃣ Clone the Repository
 ```bash
-git clone <repository-url>
-cd aichatbot
+git clone https://github.com/sachin-185/InternView-AI-AI-Powered-Interview-Preparation.git
+cd "intern app"
 ```
 
 2️⃣ Environment Configuration
 Create a `.env` file in the `backend/` directory:
 ```env
-PORT=3000
-
-# Hugging Face AI Configuration
-HF_TOKEN=your_huggingface_api_token
-HF_MODEL=Qwen/Qwen2.5-72B-Instruct
-
-# ChromaDB Cloud Configuration
-CHROMA_API_KEY=your_chromadb_api_key
-CHROMA_TENANT=your_chroma_tenant_id
-CHROMA_DATABASE=your_chroma_database_name
+PORT=8000
+JWT_SECRET=your_jwt_secret_key_here
+HUGGINGFACE_TOKEN=your_huggingface_api_token_here
 ```
 
 3️⃣ Initialize Dependencies
-Install dependencies for the root, frontend, and backend packages:
+Install dependencies for both frontend and backend modules:
 ```bash
+# Install backend dependencies
+cd backend
 npm install
-npm install --prefix frontend
-npm install --prefix backend
+
+# Install frontend runner dependencies
+cd ../frontend
+npm install
+
+# Install Vite React app dependencies
+npm run install:app
 ```
 
-4️⃣ Seed the Legal Database
-Index your statutory documents and laws into the ChromaDB vector collection:
-```bash
-npm run seed:backend
-```
+4️⃣ Run the Application
+Boot the backend server and frontend client concurrently:
 
-5️⃣ Run the Application
-Boot the React Vite dev server and Express backend concurrently:
-```bash
-npm run dev
-```
-🌐 **Vite Frontend:** http://localhost:5173  
-⚙️ **Express Backend:** http://localhost:3000  
+- **Start Express Backend**:
+  ```bash
+  cd backend
+  npm run dev
+  ```
+  *Express API running on:* `http://localhost:8000`
+
+- **Start React Frontend**:
+  ```bash
+  cd frontend
+  npm run dev
+  ```
+  *Vite Dev Server running on:* `http://localhost:5173`
 
 📐 Architecture
 ```
-┌────────────────────────────────────────────────────────────────────────┐
-│                          DriveLegal App UI                             │
-│  ┌──────────┐ ┌──────────┐ ┌─────────────┐ ┌──────────┐ ┌────────────┐ │
-│  │ Law      │ │ Challan  │ │ Emergency   │ │ Document │ │ AI Chatbot │ │
-│  │ Explorer │ │ Calc     │ │ Directory   │ │ OCR      │ │ Component  │ │
-│  └────┬─────┘ └────┬─────┘ └──────┬──────┘ └────┬─────┘ └─────┬──────┘ │
-└───────┼────────────┼──────────────┼─────────────┼─────────────┼────────┘
-        │            │              │             │             │
-        ▼            ▼              ▼             ▼             ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                        Local nlpEngine (Offline)                       │
-│  ┌────────────────────────┐ ┌──────────────────────────────────────┐   │
-│  │   Static Law Database  │ │ Offline Intent Classifier            │   │
-│  │   (IN, US, UK Rules)   │ │ & Quantum Superposition Fact Filter  │   │
-│  └────────────────────────┘ └──────────────────────────────────────┘   │
-└───────────────────────────────────┬────────────────────────────────────┘
-                                    │ (Fallback when Online)
-                                    ▼
-┌────────────────────────────────────────────────────────────────────────┐
-│                        Express API Middleware                          │
-│  ┌─────────────────┐ ┌────────────────────────┐ ┌────────────────────┐ │
-│  │  /api/auth/     │ │  /api/chat             │ │  /api/query        │ │
-│  │  (User Scoring) │ │  (Agentic Prefetching) │ │  (Vector Query)    │ │
-│  └────────┬────────┘ └───────────┬────────────┘ └──────────┬─────────┘ │
-└───────────┼──────────────────────┼─────────────────────────┼───────────┘
-            ▼                      ▼                         ▼
-┌────────────────────────┐ ┌────────────────────────┐ ┌──────────────────┐
-│  Firebase DB / Auth    │ │ Hugging Face Serverless│ │  ChromaDB Cloud  │
-│  ┌───────────────────┐ │ │ ┌────────────────────┐ │ │  ┌─────────────┐ │
-│  │  Driver Records   │ │ │ │ Qwen 2.5 LLM       │ │ │  │ Statutory   │ │
-│  │  Safety Scorecards│ │ │ │ (Generative Chat)  │ │ │  │ Documents   │ │
-│  └───────────────────┘ │ │ └────────────────────┘ │ │  └─────────────┘ │
-└────────────────────────┘ └────────────────────────┘ └──────────────────┘
+┌────────────────────────────────────────────────────────┐
+│                   InternView UI (Vite)                 │
+│  ┌──────────┐   ┌──────────────┐   ┌────────────────┐  │
+│  │ Dashboard│   │ Session Form │   │ Interview Prep │  │
+│  │ (Grid)   │   │ (Config)     │   │ (Cards/Drawer) │  │
+│  └────┬─────┘   └──────┬───────┘   └───────┬────────┘  │
+└───────┼────────────────┼───────────────────┼───────────┘
+        │                │                   │
+        ▼                ▼                   ▼
+┌────────────────────────────────────────────────────────┐
+│                   Express API Server                   │
+│  ┌─────────────────┐ ┌───────────────┐ ┌─────────────┐ │
+│  │  /api/auth/     │ │  /api/sessions│ │  /api/ai/   │ │
+│  │  (Auth & Upload)│ │  (CRUD)       │ │  (Inference)│ │
+│  └────────┬────────┘ └───────┬───────┘ └──────┬──────┘ │
+└───────────┼──────────────────┼────────────────┼────────┘
+            ▼                  ▼                ▼
+┌────────────────────────┐             ┌─────────────────┐
+│     SQLite Database    │             │  Hugging Face   │
+│  ┌──────────────────┐  │             │  Serverless API │
+│  │  Users Table     │  │             │  ┌────────────┐ │
+│  ├──────────────────┤  │             │  │ Qwen-2.5-7B│ │
+│  │  Sessions Table  │  │             │  │ LLM        │ │
+│  ├──────────────────┤  │             │  └────────────┘ │
+│  │  Questions Table │  │             └─────────────────┘
+│  └──────────────────┘  │
+└────────────────────────┘
 ```
 
 📁 Project Structure
 ```
-aichatbot/
-├── 📂 backend/                 # Express Middleware Server
-│   ├── 📂 src/
-│   │   ├── 📂 data/            # Static localized laws dictionary
-│   │   │   └── lawDatabase.js
-│   │   └── 📂 utils/           # Database layer & static rule-engine
-│   │       ├── database.js
-│   │       └── nlpEngine.js
-│   ├── seedChroma.js           # Seeds local/cloud ChromaDB collection
-│   ├── server.js               # Main Express entry point
+intern app/
+├── 📂 backend/                 # Node.js + Express.js API
+│   ├── 📂 config/
+│   │   └── db.js               # SQLite Database Connection & Schema Init
+│   ├── 📂 controllers/         # Route controller handlers
+│   │   ├── aiController.js
+│   │   ├── authController.js
+│   │   ├── questionController.js
+│   │   └── sessionController.js
+│   ├── 📂 middleware/          # JWT protection & multer file upload handling
+│   ├── 📂 models/              # SQLite SQL statement wrappers (User, Session, Question)
+│   ├── 📂 routes/              # Express Router mounts
+│   ├── 📂 uploads/             # Custom profile avatar local storage
+│   ├── server.js               # Express Server bootstrap
 │   └── package.json
 │
-├── 📂 frontend/                # React + Vite Client (Offline PWA)
-│   ├── 📂 public/              # Static app assets & logos
-│   └── 📂 src/
-│       ├── 📂 components/      # Modular App Tabs
-│       │   ├── CalculatorTab.js# Compounding fine calculations
-│       │   ├── ChatbotTab.jsx  # Grounded Chat Interface
-│       │   ├── EmergencyTab.jsx# Dynamic emergency directories
-│       │   ├── ExplorerTab.jsx # Statutes & traffic rule browser
-│       │   ├── Login.jsx       # Auth layouts
-│       │   ├── Profile.jsx     # Driver scorecard & badge showcase
-│       │   ├── QuizTab.jsx     # Road safety awareness trivia
-│       │   └── Register.jsx
-│       ├── 📂 data/            # Shared static regulations dictionary
-│       ├── 📂 utils/           # Shared offline NLP Engines & Firebase SDKs
-│       ├── App.css
-│       ├── App.jsx             # Router and tab switcher
-│       ├── main.jsx
-│       └── registerServiceWorker.js
+├── 📂 frontend/                # Client root
+│   ├── 📂 internview-prep-ai/  # React Vite SPA
+│   │   ├── 📂 src/
+│   │   │   ├── 📂 components/  # Layouts, loaders, modals, and cards
+│   │   │   ├── 📂 context/     # Auth Context and user states
+│   │   │   ├── 📂 pages/       # Auth (Login/Signup), Home (Dashboard), InterviewPrep
+│   │   │   ├── 📂 utils/       # Axios instance config & API endpoint mappings
+│   │   │   ├── App.jsx
+│   │   │   └── main.jsx
+│   │   └── package.json
+│   └── package.json            # Prefix runner scripts
 │
-├── package.json                # Concurrently build scripts
-└── README.md                   # Project documentation
+└── README.md                   # Project Documentation
 ```
 
-📊 Databases & Data Management
-DriveLegal utilizes a hybrid database architecture optimized for high-performance offline calculations with scalable cloud synchronization when online:
-
-1. **ChromaDB (Vector Database)**
-   - **Purpose:** Powers semantic Retrieval-Augmented Generation (RAG) for the AI chat agent.
-   - **Details:** Stores and indexes statutory traffic laws, compliance regulations, and localized motor vehicle acts. When online, the backend Express API runs vector search queries against ChromaDB collections to supply high-fidelity legal context.
-
-2. **Firebase (NoSQL Database & Auth)**
-   - **Purpose:** Manages driver authentication and stores user scorecards.
-   - **Details:** Integrates the Firebase SDK on the client side to secure driver accounts. Synchronizes safety scores, driving offense demerit counts, current quiz streaks, and collectible safety badge accomplishments across sessions.
-
-3. **Local Static Rules Database (lawDatabase.js)**
-   - **Purpose:** Enforces 100% offline-first fine computation and emergency lookup.
-   - **Details:** An optimized, highly structured JSON-like local dictionary loaded directly inside both the frontend and backend contexts. It houses precise demerit rates, compounding fine algorithms, and national emergency contacts for multiple regions (India, United States, and United Kingdom) to guarantee driver safety checks are accessible on remote highways with zero network coverage.
-
 🔒 Security & Privacy
-- **Offline Processing** — Document OCR scans and legal rules parsing happen entirely in your local browser sandbox. No sensitive information or user documents are sent to any external server.
-- **Stateless Secure Chat** — Conversational history remains client-side. The API routes queries through temporary token headers, ensuring zero persistent logging of search prompts.
-- **Credential Hashing** — Local profiles integrate with Firebase Auth SDKs, securing data from unauthorized endpoints.
+- **Stateless Authentication**: Protected routes verify requests via client-side JWT authorization headers.
+- **Local Database Isolation**: Keeps all session records, notes, and user credentials compiled within a single local SQLite container (`internapp.db`).
+- **Encrypted Passes**: Employs industry-standard Bcryptjs encryption layers prior to database writes.
 
 🤝 Contributing
-We welcome contributions to expand the static legal rules database to more states and countries:
 1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/new-region`).
-3. Commit your additions (`git commit -m 'Add compliance rules for Singapore'`).
-4. Push to the branch (`git push origin feature/new-region`).
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
 5. Open a Pull Request.
 
 🙏 Acknowledgments
-- 🎓 **IIT Madras & CoERS (Centre of Excellence in Road Safety)** for sponsoring the Road Safety Hackathon 2026 and providing design guidelines.
-- ⚡ **React & Vite** for ultra-fast compilation.
-- 📊 **ChromaDB & Hugging Face** for the scalable vector search and Qwen model architectures.
+- **Hugging Face** for serverless model hosting of the state-of-the-art Qwen LLM.
+- **Vite & React** for rapid development capabilities.
+- **SQLite** for lightweight local file database execution.
